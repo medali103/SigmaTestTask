@@ -1,31 +1,44 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SigmaTestTask.Services;
+using System.Threading.Tasks;
 
 namespace SigmaTestTask.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-
+    [Route("api/[controller]")]
     public class CandidatesController : ControllerBase
     {
-        private readonly ICandidateService _service;
+        private readonly ICandidateService _candidateService;
 
-        public CandidatesController(ICandidateService service)
+        public CandidatesController(ICandidateService candidateService)
         {
-            _service = service;
+            _candidateService = candidateService;
         }
 
         [HttpPost]
+        [Route("AddOrUpdateCandidate")]
         public async Task<IActionResult> AddOrUpdateCandidate([FromBody] Candidate candidate)
         {
-            if (!ModelState.IsValid)
+            if (candidate == null)
             {
-                return BadRequest(ModelState);
+                return BadRequest("Candidate information is required.");
             }
 
-            await _service.AddOrUpdateCandidateAsync(candidate);
-            return Ok();
+            await _candidateService.AddOrUpdateCandidateAsync(candidate);
+            return Ok(candidate);
+        }
+
+        [HttpGet]
+        [Route("GetCandidate")]
+        public async Task<IActionResult> GetCandidate(string email)
+        {
+            var candidate = await _candidateService.GetCandidateByEmailAsync(email);
+            if (candidate == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(candidate);
         }
     }
 }
