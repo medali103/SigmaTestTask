@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "0ciufVPIKcZVzGw//Ng61X7vNP8wpgeQfoAI4LGowXM=",
+  "Source": "SigmaTestTask",
+  "BasePath": "_content/SigmaTestTask",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
