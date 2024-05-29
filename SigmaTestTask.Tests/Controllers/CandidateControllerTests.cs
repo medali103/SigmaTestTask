@@ -25,7 +25,7 @@ namespace SigmaTestTask.Tests.Controllers
             var result = await _controller.AddOrUpdateCandidate(null);
 
             // Assert
-            Assert.IsType<OkResult>(result);
+            Assert.IsType<BadRequestObjectResult>(result);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace SigmaTestTask.Tests.Controllers
             var result = await _controller.AddOrUpdateCandidate(candidate);
 
             // Assert
-            Assert.IsType<OkResult>(result);
+            Assert.IsType<OkObjectResult>(result);
             _mockCandidateService.Verify(service => service.AddOrUpdateCandidateAsync(candidate), Times.Once);
         }
 
@@ -70,6 +70,8 @@ namespace SigmaTestTask.Tests.Controllers
             var okResult = Assert.IsType<OkObjectResult>(result);
             var returnValue = Assert.IsType<Candidate>(okResult.Value);
             Assert.Equal(candidate.Email, returnValue.Email);
+            Assert.Equal(candidate.FirstName, returnValue.FirstName);
+            Assert.Equal(candidate.LastName, returnValue.LastName);
         }
     }
 }

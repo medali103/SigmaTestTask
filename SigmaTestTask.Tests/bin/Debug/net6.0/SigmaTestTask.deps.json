@@ -11,6 +11,7 @@
           "Microsoft.EntityFrameworkCore": "6.0.31",
           "Microsoft.EntityFrameworkCore.Design": "6.0.31",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.31",
+          "Microsoft.Extensions.Caching.Memory": "6.0.1",
           "Moq": "4.20.70",
           "Swashbuckle.AspNetCore": "6.2.3",
           "xunit": "2.8.1",

@@ -3,18 +3,21 @@ using Moq;
 using Xunit;
 using SigmaTestTask.Repositories;
 using SigmaTestTask.Services;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CandidateAPI.Tests.Services
 {
     public class CandidateServiceTests
     {
         private readonly Mock<ICandidateRepository> _mockRepository;
+        private readonly Mock<IMemoryCache> _mockCache;
         private readonly CandidateService _candidateService;
 
         public CandidateServiceTests()
         {
             _mockRepository = new Mock<ICandidateRepository>();
-            _candidateService = new CandidateService(_mockRepository.Object);
+            _mockCache = new Mock<IMemoryCache>();
+            _candidateService = new CandidateService(_mockRepository.Object, _mockCache.Object);
         }
 
         [Fact]

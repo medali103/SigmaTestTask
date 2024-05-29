@@ -1714,6 +1714,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.31",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.31",
+          "Microsoft.Extensions.Caching.Memory": "6.0.1",
           "Moq": "4.20.70",
           "Swashbuckle.AspNetCore": "6.2.3",
           "xunit": "2.8.1"
@@ -5461,6 +5462,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Microsoft.Extensions.Caching.Memory >= 6.0.1",
       "Microsoft.NET.Test.Sdk >= 17.3.2",
       "Moq >= 4.20.70",
       "SigmaTestTask >= 1.0.0",
@@ -5511,6 +5513,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Microsoft.Extensions.Caching.Memory": {
+            "target": "Package",
+            "version": "[6.0.1, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[17.3.2, )"
